@@ -3,7 +3,11 @@
 * @package userpanelfrontend
 */
 
-class UserPanelFrontendClass{
+namespace Inc;
+
+use Inc\Shortcode;
+
+final class Init{
 
     public $pluginName;
 
@@ -11,7 +15,7 @@ class UserPanelFrontendClass{
         $this->pluginName = 'userpanelfrontend';
     }
 
-    public function initPlugin(){
+    public function register_services(){
         add_action('admin_init', array($this, 'linkCssAndJs'));
         add_action('admin_menu', array($this, 'addAdminPage'));
         add_filter('plugin_action_links_userpanelfrontend/userpanelfrontend.php', array($this, 'settingsLinks'));
@@ -25,18 +29,16 @@ class UserPanelFrontendClass{
     }
 
     public function linkCssAndJs(){
-        wp_register_style('estilos', plugins_url('assets/style.css', __FILE__));
+        wp_register_style('estilos', UPF_PLUGIN_URL.'includes/assets/style.css');
         wp_enqueue_style('estilos');
-        wp_register_script('codigo', plugins_url('assets/app.js', __FILE__));
+        wp_register_script('codigo', UPF_PLUGIN_URL.'includes/assets/app.js');
         wp_enqueue_script('codigo');
     }
 
     public function inicialiseShortcode(){
-        require_once plugin_dir_path(__FILE__).'UserPanelFrontendShortcode.php';
-        function shortcodereturn() {
-            return UserPanelFrontendShortcode::createShortcode();
-        }
-        add_shortcode('panel_users_frontend', 'shortcodereturn');
+        add_shortcode('panel_user', function(){
+            return Shortcode::createShortcode();
+        });
     }
 
     public function addAdminPage(){
@@ -50,8 +52,8 @@ class UserPanelFrontendClass{
         '1');
     }
 
-    public function adminMenuIndex(){
-        require_once plugin_dir_path(__FILE__).'templates/admin/AdminIndex.php';
+    public static function adminMenuIndex(){
+        require_once UPF_PLUGIN_PATH.'includes/templates/admin/AdminIndex.php';
     }
 }
 

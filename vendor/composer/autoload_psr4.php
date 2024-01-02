@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Nadir\\Userpanelfrontend\\' => array($baseDir . '/src'),
+    'Inc\\' => array($baseDir . '/includes'),
 );

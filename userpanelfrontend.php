@@ -16,16 +16,29 @@ Text Domain: userpanelfrontend
 if(!defined('ABSPATH')){
     die;
 }
+
+if(!defined('UPF_PLUGIN_PATH')){
+    define('UPF_PLUGIN_PATH', plugin_dir_path( __FILE__ ));
+}
+
+if(!defined('UPF_PLUGIN_URL')){
+    define('UPF_PLUGIN_URL', plugin_dir_url( __FILE__ ));
+}
+
+if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
+    require_once dirname(__FILE__).'/vendor/autoload.php';
+}
+
 if(!function_exists('add_action')){
     echo "ERROR, YOU CANT ACCESS THIS FILE.";
     exit;
 }
 
-require_once plugin_dir_path(__FILE__).'includes/UserPanelFrontendClass.php';
+use Inc\Init;
 
-if(class_exists('UserPanelFrontendClass')){
-    $upfc = new UserPanelFrontendClass();
-    $upfc->initPlugin();
+if(class_exists('Inc\\Init')){
+    $upfc = new Init();
+    $upfc->register_services();
 }
 
 //register_deactivation_hook( __FILE__, array($upfc, 'deactivation'));
