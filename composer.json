@@ -1,0 +1,19 @@
+{
+    "name": "nadir/userpanelfrontend",
+    "description": "Plugin para wordpress",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "Nadir\\Userpanelfrontend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nasanchez7",
+            "email": "nadirblanco02@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
