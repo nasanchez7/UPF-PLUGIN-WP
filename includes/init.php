@@ -33,6 +33,13 @@ final class Init{
         }
     }
 
+    public function activationPlugin(){
+        function user_last_login( $user_login, $user ) {
+            update_user_meta( $user->ID, 'last_login', time() );
+        }
+        add_action( 'wp_login', 'user_last_login', 10, 2 );
+    }
+
     public function settingsLinks($links){
         $setting_link = '<a href="admin.php?page=UPF"> Ajustes </a>';
         array_push($links, $setting_link);

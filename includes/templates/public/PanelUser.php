@@ -6,46 +6,57 @@
             <span><strong><?php echo $total_users?></strong> usuarios totales</span>    
         </div>
         <div class="containerButtons">
-            <button>Crear nuevo usuario</button>
+            <button id="newUserActivate">Crear nuevo usuario</button>
         </div>
+    </div>
+    <div class="containerNewUser deactivate" id="containerNewUser">
+        <form>
+            <input type="text" placeholder="Nombre de usuario" />
+            <input type="mail" placeholder="E-mail" />
+            <input type="password" placeholder="Contraseña" />
+        </form>
     </div>
     <div class="tableContainer">
         <table>
             <thead>
                 <tr>
-                    <th></th>
                     <th>Usuario</th>
                     <th>Nombre Público</th>
                     <th>Rol</th>
                     <th>E-mail</th>
                     <th>Fecha de Registro</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <div class="profileAvatar">
-                            <div class="dashicons dashicons-admin-users"></div>
-                        </div>
-                    </td>
-                    <td>Usuario1</td>
-                    <td>Nombre1</td>
-                    <td>Rol1</td>
-                    <td>email1@example.com</td>
-                    <td>2024-01-03</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profileAvatar">
-                            <div class="dashicons dashicons-admin-users"></div>
-                        </div>
-                    </td>
-                    <td>Usuario1</td>
-                    <td>Nombre2</td>
-                    <td>Rol2</td>
-                    <td>email2@example.com</td>
-                    <td>2024-01-04</td>
-                </tr>
+                <?php foreach($users as $user): ?>
+                <?php 
+                    $avatar = get_avatar_url($user->user_email);
+                    $user_data = get_userdata($user->ID);
+                    $user_rol = $all_roles[$user_data->roles[0]];
+                ?>    
+                    <tr>
+                        <td>
+                            <?php if($avatar):?>
+                            <img src="<?php echo $avatar?>" style="width: 50px; height: 50px; border-radius: 25px; margin-right: 10px;"></img>
+                            <?php else: ?>
+                            <div class="profileAvatar">
+                                <div class="dashicons dashicons-admin-users"></div>
+                            </div>
+                            <?php endif?>
+                            <span><?php echo $user->user_login ?></span>
+                        </td>
+                        <td><?php echo $user->display_name ?></td>
+                        <td>
+                            <span class="role"> <?php echo $user_rol?> </span>
+                        </td>
+                        <td><?php echo $user->user_email ?></td>
+                        <td><?php echo $user->user_registered ?></td>
+                        <td class="edit">Ver mas informacion</td>
+                        <td class="delete">Eliminar</td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>

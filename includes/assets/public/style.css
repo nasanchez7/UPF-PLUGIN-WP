@@ -2,6 +2,7 @@
     padding: 20px;
     margin: 0px!important;
     max-width: 100%!important;
+    background-color: #F2F2F2;
 }
 
 .generalContainer h1{
@@ -19,8 +20,25 @@
     margin-left: 0px!important;
     margin-right: 0px!important;
     padding: 10px;
-    background-color: rgb(241, 241, 241);
+    background-color: white;
     border-radius: 5px;
+}
+
+.containerNewUser{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%!important;
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+}
+
+.deactivate{
+    display: none;
 }
 
 .containerTotalUsers span{
@@ -64,7 +82,8 @@
 
 table{
     border: none!important;
-    background-color: white!important;
+    background-color: #F2F2F2!important;
+    border-spacing: 0px 20px;
 }
 
 table, td, th {
@@ -75,7 +94,6 @@ table, td, th {
 tbody tr td{
     font-weight: 600;
     color: black;
-    
     font-size: 18px;
 }
 
@@ -83,23 +101,56 @@ tbody tr td{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    width: fit-content;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     background-color: rgb(230, 230, 230);
+}
+
+tbody tr{
+    -webkit-box-shadow: 0px 5px 15px -8px #00000000; 
+    box-shadow: 0px 5px 15px -8px #00000000;
 }
 
 tbody tr:hover{
     background-color: rgb(230, 230, 230);
     transition: all 0.5s;
+    -webkit-box-shadow: 0px 5px 15px -8px #000000; 
+    box-shadow: 0px 5px 15px -8px #000000;
 }
 
 thead tr th{
-    font-weight: 400;
+    font-weight: 500;
+    text-transform: uppercase;
     color: rgb(121, 121, 121);
-    font-size: 14px;
+    font-size: 13px;
 }
 
+tbody tr td{
+    padding: 15px;
+    background-color: white!important;
+}
+
+tbody tr{
+    border-radius: 5px;
+}
+
+.edit{
+    color: #4843D9;
+    cursor: pointer;
+}
+
+.delete{
+    color: #F21B1B;
+    cursor: pointer;
+}
+
+.role{
+    color: #635ef3;
+    background-color: #7571e026;
+    border-radius: 5px;
+    padding: 7px;
+}
 
 
 

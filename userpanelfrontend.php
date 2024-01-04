@@ -41,6 +41,6 @@ if(class_exists('Inc\\Init')){
     $upfc->register_services();
 }
 
-//register_deactivation_hook( __FILE__, array($upfc, 'deactivation'));
+register_activation_hook( __FILE__, array($upfc, 'activationPlugin'));
 
 
