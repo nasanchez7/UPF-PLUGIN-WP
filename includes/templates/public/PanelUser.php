@@ -1,5 +1,5 @@
 <div class="generalContainer">
-    <h1 style="color: #262626;">Administrador de usuarios</h1>
+    <h1 style="color: #262626;">Lista de usuarios</h1>
     <div class="buttonsAndTotal">
         <div class="containerTotalUsers">
             <div class="dashicons dashicons-admin-users"></div>   
@@ -35,6 +35,7 @@
                     $avatar = get_avatar_url($user->user_email);
                     $user_data = get_userdata($user->ID);
                     $user_rol = $all_roles[$user_data->roles[0]];
+                    $date_registered = new DateTime($user->user_registered);
                 ?>    
                     <tr>
                         <td>
@@ -52,7 +53,7 @@
                             <span class="role"> <?php echo $user_rol?> </span>
                         </td>
                         <td><?php echo $user->user_email ?></td>
-                        <td><?php echo $user->user_registered ?></td>
+                        <td><?php echo $date_registered->format('M jS, Y')?></td>
                         <td class="edit">Ver mas informacion</td>
                         <td class="delete">Eliminar</td>
                     </tr>
