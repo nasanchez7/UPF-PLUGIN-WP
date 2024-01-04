@@ -1,0 +1,25 @@
+.adminPanelContainer{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 10px;
+}
+
+.containerInfo{
+    margin-left: 15px;
+}
+
+.containerInfo h1{
+    font-weight: 600;
+
+}
+
+.containerInfo strong{
+    padding: 5px;
+    background-color: rgba(54, 54, 54, 0.105);
+}
+
+.warning {
+    color: red;
+    font-weight: 600;
+}
