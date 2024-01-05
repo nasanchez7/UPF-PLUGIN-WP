@@ -10,10 +10,21 @@
         </div>
     </div>
     <div class="containerNewUser deactivate" id="containerNewUser">
-        <form>
-            <input type="text" placeholder="Nombre de usuario" />
-            <input type="mail" placeholder="E-mail" />
-            <input type="password" placeholder="Contraseña" />
+        <form method="post">
+            <input type="text" name="newuser_username" placeholder="Nombre de usuario" />
+            <input type="mail" name="newuser_email" placeholder="E-mail" />
+            <input type="password" name="newuser_password" placeholder="Contraseña" />
+        </form>
+    </div>
+    <div class="containerSendEmail" id="containerSendEmail">
+        <div class="containerCloseEmail" >
+            <span id="containerCloseEmail" class="dashicons dashicons-no-alt"></span>
+        </div>
+        <form method="post">
+            <input id="sendemail_email" type="text" name="sendemail_email" value="nadirblanco02@gmail.com" readonly/>
+            <input type="text" name="sendemail_asunto" placeholder="Asunto" />
+            <input type="text" name="sendemail_cuerpo" placeholder="Cuerpo del mensaje" />
+            <input type="submit" value="Enviar email"/>
         </form>
     </div>
     <div class="tableContainer">
@@ -25,6 +36,7 @@
                     <th>Rol</th>
                     <th>E-mail</th>
                     <th>Fecha de Registro</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -54,11 +66,37 @@
                         </td>
                         <td><?php echo $user->user_email ?></td>
                         <td><?php echo $date_registered->format('M jS, Y')?></td>
-                        <td class="edit">Ver mas informacion</td>
-                        <td class="delete">Eliminar</td>
+                        <td class="edit">
+                            <form method="post">
+                                <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
+                                <button>Ver mas informacion</button>
+                            </form>
+                        </td>
+                        <td class="delete">
+                            <form method="post">
+                                <input type="text" name="delete_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
+                                <button>Eliminar</button>
+                            </form>
+                        </td>
+                        <td class="emailsend" onclick="activateEmail('<?php echo $user->user_email?>')">
+                            <span class="dashicons dashicons-email"></span>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
     </div>
+
+    <script>
+        const sendEmailInput = document.getElementById('sendemail_email')
+        const containerSendEmail = document.getElementById('containerSendEmail')
+        const containerCloseEmail = document.getElementById('containerCloseEmail')
+        function activateEmail(email){
+            sendEmailInput.value = email;
+            containerSendEmail.style.transform = 'translateX(0vw)';
+        }
+        containerCloseEmail.addEventListener('click', () => {
+            containerSendEmail.style.transform = 'translateX(100vw)';
+        })
+    </script>
 <div>

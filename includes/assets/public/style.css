@@ -135,14 +135,19 @@ tbody tr{
     border-radius: 5px;
 }
 
-.edit{
-    color: #4843D9;
+.edit form button{
+    color: #4843D9!important;
+    background-color: transparent!important;
     cursor: pointer;
+    padding: 0px!important;
 }
 
-.delete{
-    color: #F21B1B;
+.delete form button{
+    border: none!important;
+    background-color: transparent!important;
+    color: #F21B1B!important;
     cursor: pointer;
+    padding: 0px!important;
 }
 
 .role{
@@ -151,6 +156,62 @@ tbody tr{
     border-radius: 5px;
     padding: 7px;
 }
+
+.containerSendEmail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    position: fixed;
+    width: max-content;
+    height: max-content;
+    background-color: white;
+    bottom: 0;
+    right: 0;
+    margin-right: 50px!important;
+    margin-bottom: 50px;
+    -webkit-box-shadow: 0px 2px 31px -11px #000000; 
+    box-shadow: 0px 2px 31px -11px #000000;
+    transform: translateX(100vw);
+    transition: all 0.5s;
+}
+
+.containerSendEmail form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.containerSendEmail input[type="submit"]{
+    border-radius: 10px;
+}
+
+.containerCloseEmail{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.containerSendEmail span{
+    cursor: pointer;
+}
+
+.emailsend{
+    color: #4843D9;
+    cursor: pointer;
+}
+
+.emailsend span{
+    margin-top: 3px;
+}
+
+
 
 
 
