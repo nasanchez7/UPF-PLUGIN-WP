@@ -11,9 +11,10 @@
     </div>
     <div class="containerNewUser deactivate" id="containerNewUser">
         <form method="post">
-            <input type="text" name="newuser_username" placeholder="Nombre de usuario" />
-            <input type="mail" name="newuser_email" placeholder="E-mail" />
-            <input type="password" name="newuser_password" placeholder="Contraseña" />
+            <input type="text" required name="newuser_username" placeholder="Nombre de usuario" />
+            <input type="mail" required name="newuser_email" placeholder="E-mail" />
+            <input type="password" required name="newuser_password" placeholder="Contraseña" />
+            <input type="submit" value="Crear usuario"/>
         </form>
     </div>
     <div class="containerSendEmail" id="containerSendEmail">

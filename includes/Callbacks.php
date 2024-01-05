@@ -27,4 +27,19 @@ class Callbacks{
             echo 'Instala Woocommerce para activar los campos de usuarios correspondientes.';
         } 
     }
+
+    public static function deleteUser($args){
+        echo 'delete user';
+        print_r($args);
+    }
+
+    public static function createUser($args){
+        echo 'create user';
+        print_r($args);
+    }
+
+    public static function viewMoreUser($args){
+        echo 'view more user';
+        print_r($args);
+    }
 }
