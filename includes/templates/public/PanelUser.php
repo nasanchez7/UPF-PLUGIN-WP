@@ -10,25 +10,25 @@
             } ?></span>    
         </div>
         <div class="containerButtons">
-            <button id="newUserActivate">Crear nuevo usuario</button>
+            <button id="newUserActivate">New user</button>
         </div>
     </div>
     <div class="containerNewUser deactivate" id="containerNewUser">
         <form method="post">
             <label for="newuser_username">
-                Nombre de usuario
-                <input type="text" required name="newuser_username" placeholder="Nombre de usuario" />
+                Username
+                <input type="text" required name="newuser_username" placeholder="Username" />
             </label>
             <label for="newuser_email">
                 E-mail
                 <input type="mail" required name="newuser_email" placeholder="E-mail" />
             </label>
             <label for="newuser_password">
-                Contraseña
-                <input type="password" required name="newuser_password" placeholder="Contraseña" />
+                Password
+                <input type="password" required name="newuser_password" placeholder="Password" />
             </label>
             <label for="newuser_rol">
-                Rol del usuario
+                Rol
                 <select name="newuser_rol">
                     <?php foreach($all_roles as $key => $value) :?>
                         <option value="<?php echo $key?>"><?php echo $value?></option>
@@ -44,15 +44,15 @@
         </div>
         <form method="post">
             <label for="email">
-                Enviar mail a
+                Send email to
                 <input id="sendemail_email" type="email" name="sendemail_email" value="" readonly/>
             </label>
             <label for="sendemail_asunto">
-                Asunto
+                Subject
                 <input type="text" name="sendemail_asunto" placeholder="Asunto" required/>
             </label>
             <label for="sendemail_cuerpo">
-                Mensaje
+                Message
                 <input type="text" name="sendemail_cuerpo" placeholder="Cuerpo del mensaje" required/>
             </label>
             <input type="submit" value="Enviar email"/>
@@ -62,11 +62,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Usuario</th>
-                    <th>Nombre Público</th>
+                    <th>Username</th>
+                    <th>Display Name</th>
                     <th>Rol</th>
                     <th>E-mail</th>
-                    <th>Fecha de Registro</th>
+                    <th>registration date</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -107,13 +107,13 @@
                             <td class="edit">
                                 <form method="post">
                                     <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
-                                    <button>Ver mas informacion</button>
+                                    <button>View more</button>
                                 </form>
                             </td>
                             <td class="delete">
                                 <form method="post">
                                     <input type="text" name="delete_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
-                                    <button>Eliminar</button>
+                                    <button>Delete user</button>
                                 </form>
                             </td>
                             <td class="emailsend" onclick="activateEmail('<?php echo $user->user_email?>')">
@@ -133,13 +133,13 @@
             <?php if($actualPage !== 1) :?>
                 <form method="post">
                     <input type="number" name="previous_page" value="<?php echo $actualPage?>" style="display:none;" />
-                    <input type="submit" value="Anterior pagina" />
+                    <input type="submit" value="Previous page" />
                 </form>
             <?php endif;?>
             <?php if(!empty($users)):?>
                 <form method="post">
                     <input type="number" name="next_page" value="<?php echo $actualPage?>" style="display:none;" />
-                    <input type="submit" value="Siguiente pagina" />
+                    <input type="submit" value="Next page" />
                 </form>
             <?php endif;?>    
         </div>

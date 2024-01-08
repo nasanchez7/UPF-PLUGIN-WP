@@ -204,7 +204,7 @@ tbody tr{
     padding: 20px;
     border-radius: 15px;
     position: fixed;
-    width: max-content;
+    width: 400px!important;
     height: max-content;
     background-color: white;
     bottom: 0;
