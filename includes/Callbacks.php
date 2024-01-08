@@ -2,6 +2,8 @@
 
 namespace Inc;
 
+require_once( ABSPATH . 'wp-admin/includes/user.php' );
+
 class Callbacks{
 
     public static function designField(){
@@ -29,17 +31,84 @@ class Callbacks{
     }
 
     public static function deleteUser($args){
-        echo 'delete user';
-        print_r($args);
+        $user_id = intval($args);
+        $user_data = get_userdata($user_id);
+        $rol = $user_data->roles[0];
+        if($rol == 'administrator'){
+            ?>
+                <div class="failedContainer">
+                    <p>El usuario <?php echo $user_data->user_login?> no se ha podido eliminar porque es un usuario administrador.</p>
+                </div>
+            <?php
+            return;
+        }
+        $delete_user = wp_delete_user($user_id);
+        if($delete_user){   
+            ?>
+                <div class="containerFormat">
+                    <div class="successContainer">
+                         <p>El usuario <?php echo $user_data->user_login?> ha sido eliminado con exito.</p>
+                     </div>
+                </div>
+            <?php
+        }else{
+            ?>
+            <div class="containerFormat">
+                <div class="failedContainer">
+                    <p>El usuario <?php echo $user_data->user_login?> no se ha podido eliminar, intentalo de nuevo.</p>
+                </div>
+            </div>    
+            <?php
+        }
     }
 
     public static function createUser($args){
-        echo 'create user';
-        print_r($args);
+        $new_user = wp_insert_user( $args );
+        if($new_user){   
+            ?>
+                <div class="containerFormat">
+                    <div class="successContainer">
+                         <p>El usuario <?php echo $_POST['newuser_username'] ?> ha sido creado con exito.</p>
+                     </div>
+                </div>
+            <?php
+        }else{
+            ?>
+            <div class="containerFormat">
+                <div class="failedContainer">
+                    <p>El usuario <?php echo $_POST['newuser_username'] ?> no se ha podido crear, intentalo de nuevo.</p>
+                </div>
+            </div>    
+            <?php
+        }
     }
 
     public static function viewMoreUser($args){
         echo 'view more user';
         print_r($args);
+    }
+
+    public static function sendEmail($email, $asunto, $cuerpo){
+        $content_type = function() { return 'text/html'; };
+        add_filter( 'wp_mail_content_type', $content_type );
+        $email = wp_mail($email, $asunto, $cuerpo);
+        remove_filter( 'wp_mail_content_type', $content_type );
+        if($email){   
+            ?>
+                <div class="containerFormat">
+                    <div class="successContainer">
+                         <p>Email enviado a <?php echo $_POST['sendemail_email'] ?> con exito.</p>
+                     </div>
+                </div>
+            <?php
+        }else{
+            ?>
+            <div class="containerFormat">
+                <div class="failedContainer">
+                    <p>El envio del email a <?php echo $_POST['sendemail_email'] ?> ha fallado, intentalo de nuevo.</p>
+                </div>
+            </div>    
+            <?php
+        }
     }
 }
