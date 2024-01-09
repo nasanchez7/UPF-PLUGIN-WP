@@ -1,12 +1,12 @@
 <div class="generalContainer">
-    <h1 style="color: #262626;">Lista de usuarios</h1>
+    <h1 style="color: #262626;">List of users</h1>
     <div class="buttonsAndTotal">
         <div class="containerTotalUsers">
             <div class="dashicons dashicons-admin-users"></div>   
             <span><strong><?php echo $total_users?></strong><?php if($total_users == 1){
-                echo ' usuario activo en el sitio.';
+                echo ' active user on the site.';
             }else{
-                echo ' usuarios totales activos en el sitio.';
+                echo ' total active users on the site.';
             } ?></span>    
         </div>
         <div class="containerButtons">

@@ -83,9 +83,35 @@ class Callbacks{
         }
     }
 
-    public static function viewMoreUser($args){
-        echo 'view more user';
-        print_r($args);
+    public static function viewMoreUser($id){
+        if(!$id) return;
+        /*echo 'view more user';
+        print_r($args);*/
+        $customer = new \WC_Customer( $id );
+        $username_wc = $customer->get_username(); // Get username
+        $user_email_wc = $customer->get_email();
+        $avatar = get_avatar_url($user_email_wc);
+        //Billing information
+        $billing_first_name = $customer->get_billing_first_name();
+        $billing_last_name  = $customer->get_billing_last_name();
+        $billing_company    = $customer->get_billing_company();
+        $billing_address_1  = $customer->get_billing_address_1();
+        $billing_address_2  = $customer->get_billing_address_2();
+        $billing_city       = $customer->get_billing_city();
+        $billing_state      = $customer->get_billing_state();
+        $billing_postcode   = $customer->get_billing_postcode();
+        $billing_country    = $customer->get_billing_country();
+        //Shipping information
+        $shipping_first_name = $customer->get_shipping_first_name();
+        $shipping_last_name  = $customer->get_shipping_last_name();
+        $shipping_company    = $customer->get_shipping_company();
+        $shipping_address_1  = $customer->get_shipping_address_1();
+        $shipping_address_2  = $customer->get_shipping_address_2();
+        $shipping_city       = $customer->get_shipping_city();
+        $shipping_state      = $customer->get_shipping_state();
+        $shipping_postcode   = $customer->get_shipping_postcode();
+        $shipping_country    = $customer->get_shipping_country();
+        include_once(UPF_PLUGIN_PATH.'includes/templates/public/AccountDetails.php'); 
     }
 
     public static function sendEmail($email, $asunto, $cuerpo){

@@ -54,13 +54,14 @@ class Shortcode{
                         $users = array();
                         $users = get_users(array(
                             'order'   => 'ASC',
-                            'role__in' => $roles
+                            'role__in' => $roles,
+                            'number' => 3,
+                            'paged' => $actualPage
                         ));
                         $total_users = $total_users + 1;
                     }
                 }
                 if(isset($_POST['viewmore_userid'])){
-                    $args_viewmore_userid = array();
                     $viewmore_userid = $_POST['viewmore_userid'];
                     Callbacks::viewMoreUser($viewmore_userid);
                 }
