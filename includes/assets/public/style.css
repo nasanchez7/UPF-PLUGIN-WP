@@ -424,11 +424,74 @@ tbody tr{
 }
 
 .ordersContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: 100%!important;
     max-width: 100%!important;
     margin-right: 0px!important;
     margin-left: 0px!important;
     margin-top: 15px!important;
     margin-bottom: 0px!important;
+}
+
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
     padding: 20px;
+    border-radius: 15px;
+    background-color: #262626;
+    color: white;
+}
+
+.informationContainer{
+    display: flex;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.moreInfomationContainer{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.moreInfomationContainer span{
+    cursor: pointer;
+}
+
+.orderContainer .status{
+    color: white;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.orderOcult{
+    display: none;
+}
+
+.orderNameContainer{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerDetailsOrder{
+    padding-top: 10px;
+    margin-top: 15px;
+    border-top: 1px solid lightgray;
 }

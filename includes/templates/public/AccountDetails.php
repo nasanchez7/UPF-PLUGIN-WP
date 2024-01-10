@@ -229,18 +229,89 @@
         </div>
     </div>
     <div class="division">
-        <strong>Orders <?php if(!empty($orders)) echo '('.count($orders).')'?></strong>
+        <strong>Orders List<?php if(!empty($orders)) echo '('.count($orders).')'?></strong>
     </div>
     <div class="ordersContainer">
         <?php if(!empty($orders)) : ?>
             <?php foreach($orders as $order):
             $order_data = $order->get_data();
+            $date_order = new DateTime($order->get_date_created());
             ?>
-                <strong>Id del pedido <?php echo $order_data['id']?></strong>
-                <strong>Status <?php echo $order->get_status() ?></strong>
+                <div class="orderContainer">
+                    <div class="informationContainer">
+                        <div class="orderNameContainer">
+                            <strong>Order #<?php echo $order_data['id']?></strong>
+                            <small><?php echo $date_order->format('M jS, Y')?></small>
+                        </div>
+                        <div class="moreInfomationContainer">
+                            <strong class="status"><?php echo $order->get_status() ?></strong>
+                            <span id="button<?php echo $order_data['id']?>" onclick="orderDetail('<?php echo $order_data['id']?>')" class="dashicons dashicons-arrow-down-alt2"></span>
+                        </div>
+                    </div>
+                    <div class="orderOcult" id="<?php echo $order_data['id']?>">
+                        <div class="containerDetailsOrder">
+                            <div class="lista">
+                                <div class="itemLista">
+                                    <strong>Payment method</strong>
+                                    <small>
+                                        <?php if($order->get_payment_method_title()) :?>
+                                            <?php echo $order->get_payment_method_title() ?>
+                                        <?php else: ?>
+                                            No information found
+                                        <?php endif?>
+                                    </small>
+                                </div>
+                                <div class="itemLista">
+                                    <strong>Customer's note</strong>
+                                    <small>
+                                        <?php if($order->get_customer_note()) :?>
+                                            <?php echo $order->get_customer_note() ?>
+                                        <?php else: ?>
+                                            No information found
+                                        <?php endif?>
+                                    </small>
+                                </div>
+                                <div class="itemLista">
+                                    <strong>Shipping method</strong>
+                                    <small>
+                                        <?php if($order->get_shipping_to_display()) :?>
+                                            <?php echo $order->get_shipping_to_display(); ?>
+                                        <?php else: ?>
+                                            No information found
+                                        <?php endif?>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             <?php endforeach?>
         <?php else: ?>
             <p>Orders not found</p>
         <?php endif?>
     </div>
+
+
+
+    <script>
+        let isOcult = true;
+        const orderDetail = (id) => {
+            const orderId = id.toString()
+            const orderDetailContainer = document.getElementById(orderId)
+            const buttonOrder =  document.getElementById('button' + orderId)
+            if(isOcult){
+                orderDetailContainer.classList.remove('orderOcult')
+                buttonOrder.classList.add('dashicons-arrow-up-alt2')
+                buttonOrder.classList.remove('dashicons-arrow-down-alt2')
+                isOcult = false;
+            }else{
+                orderDetailContainer.classList.add('orderOcult')
+                buttonOrder.classList.add('dashicons-arrow-down-alt2')
+                buttonOrder.classList.remove('dashicons-arrow-up-alt2')
+                isOcult = true;
+            }
+        }   
+    </script>
+
 </div>
