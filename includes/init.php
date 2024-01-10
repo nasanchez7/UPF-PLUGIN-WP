@@ -81,15 +81,8 @@ final class Init{
         $settingsNew = [
             array(
                 'option_group' => 'config_group',
-                'option_name' => 'type_design',
+                'option_name' => 'role_view_panel',
                 'callback' => function($input){ return $input;}
-            ),
-            array(
-                'option_group' => 'config_group',
-                'option_name' => 'woocommerce_compability',
-                'callback' => function($input){ 
-                    return (isset($input) ? true : false);
-                }
             )
         ];
 
@@ -116,25 +109,14 @@ final class Init{
     private function setSettingsField(){
         $settingsFieldNew = [
             array(
-                'id' => 'type_design',
-                'title' => 'Tipo de diseño de lista de usuarios',
-                'callback' => array($this->callbacks, 'designField'),
-                'page' => 'UPF',
-                'section' => 'UPF_admin_index',
-                'args' => array(
-                    'label_for' => 'type_design',
-                    'class' => 'typeDesingField'
-                )
-            ),
-            array(
-                'id' => 'woocommerce_compability',
-                'title' => 'Mostrar informacion de Woocommerce',
+                'id' => 'role_view_panel',
+                'title' => 'In addition to the administrator who can see the panel on the frontend',
                 'callback' => array($this->callbacks, 'checkboxField'),
                 'page' => 'UPF',
                 'section' => 'UPF_admin_index',
                 'args' => array(
-                    'label_for' => 'woocommerce_compability',
-                    'class' => 'woocommerceField'
+                    'label_for' => 'role_view_panel',
+                    'class' => 'roleViewPanel'
                 )
             )
         ];

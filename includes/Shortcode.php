@@ -12,7 +12,8 @@ class Shortcode{
     public static function createShortcode(){
         if (!is_admin()) {
             ob_start();
-            if(current_user_can('administrator')) {
+            $rol = get_option('role_view_panel');
+            if(current_user_can('administrator') || current_user_can($rol)) {
                 global $wp_roles;
                 $all_roles = $wp_roles->get_names();
                 $roles = array();
@@ -27,9 +28,10 @@ class Shortcode{
                     $actualPage = $_POST['previous_page'] - 1;
                 }
                 $args = array(
-                    'order'   => 'ASC',
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                     'role__in' => $roles,
-                    'number' => 3,
+                    'number' => 5,
                     'paged' => $actualPage
                 );
                 $users = get_users( $args );

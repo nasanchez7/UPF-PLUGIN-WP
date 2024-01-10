@@ -17,13 +17,22 @@ class Callbacks{
     }
 
     public static function checkboxField($args){
-        $value = get_option($args['label_for']);
+        global $wp_roles;
+        $all_roles = $wp_roles->get_names();
+
+        $label = get_option($args['label_for']);
         $classes = $args['class'];
+
         if ( class_exists( 'WooCommerce' ) ) {
         ?>
-            <input type="checkbox" value="1" class="<?php echo $classes;?>" name="<?php echo $args['label_for'];?>" 
-            <?php if($value) { echo 'checked'; } ?>
-            />
+            <select name="<?php echo $args['label_for'];?>" class="<?php echo $classes;?>">
+                <option <?php if(!$label) { echo 'selected'; }?> value="only_admin" >Only the administrator</option>
+                <?php foreach($all_roles as $key => $value) :?>
+                    <?php if($value !== 'Administrator') :?>
+                        <option <?php if($label) { echo 'selected'; } ?> value="<?php echo $key?>"><?php echo $value?></option>
+                    <?php endif?>
+                <?php endforeach;?>
+            </select>
         <?php
         }else{
             echo 'Instala Woocommerce para activar los campos de usuarios correspondientes.';
