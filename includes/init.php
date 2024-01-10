@@ -67,9 +67,9 @@ final class Init{
     }
 
     public function addAdminPage(){
-        add_menu_page('
-        User Panel In Frontend', 
-        'User Panel In Frontend', 
+        add_menu_page(
+        'Users Panel In Frontend', 
+        'Users Panel In Frontend', 
         'manage_options', 
         'UPF', 
         array($this, 'adminMenuIndex'), 
@@ -102,7 +102,7 @@ final class Init{
         $settingsSectionsNew = [
             array(
                 'id' => 'UPF_admin_index',
-                'title' => 'Configuracion',
+                'title' => 'Settings',
                 'callback' => function(){ echo '';},
                 'page' => 'UPF'
             )

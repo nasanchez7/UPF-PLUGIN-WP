@@ -228,4 +228,19 @@
             </div>
         </div>
     </div>
+    <div class="division">
+        <strong>Orders <?php if(!empty($orders)) echo '('.count($orders).')'?></strong>
+    </div>
+    <div class="ordersContainer">
+        <?php if(!empty($orders)) : ?>
+            <?php foreach($orders as $order):
+            $order_data = $order->get_data();
+            ?>
+                <strong>Id del pedido <?php echo $order_data['id']?></strong>
+                <strong>Status <?php echo $order->get_status() ?></strong>
+            <?php endforeach?>
+        <?php else: ?>
+            <p>Orders not found</p>
+        <?php endif?>
+    </div>
 </div>

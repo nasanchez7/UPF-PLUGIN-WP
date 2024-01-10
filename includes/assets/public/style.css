@@ -422,3 +422,13 @@ tbody tr{
     width: fit-content;
     padding: 5px!important;
 }
+
+.ordersContainer{
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+    margin-top: 15px!important;
+    margin-bottom: 0px!important;
+    padding: 20px;
+}

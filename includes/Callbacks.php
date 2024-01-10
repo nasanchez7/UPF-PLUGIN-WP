@@ -110,6 +110,7 @@ class Callbacks{
         $billing_postcode   = $customer->get_billing_postcode();
         $billing_country    = $customer->get_billing_country();
         $billing_phone  = $customer->get_billing_phone();
+        $billing_email  = $customer->get_billing_email();
         //Shipping information
         $shipping_first_name = $customer->get_shipping_first_name();
         $shipping_last_name  = $customer->get_shipping_last_name();
@@ -120,6 +121,13 @@ class Callbacks{
         $shipping_state      = $customer->get_shipping_state();
         $shipping_postcode   = $customer->get_shipping_postcode();
         $shipping_country    = $customer->get_shipping_country();
+        //Orders
+        $args = array(
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'customer' => $id
+        );
+        $orders = wc_get_orders( $args );
         include_once(UPF_PLUGIN_PATH.'includes/templates/public/AccountDetails.php'); 
     }
 

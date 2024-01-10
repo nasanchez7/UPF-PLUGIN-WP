@@ -105,10 +105,12 @@
                             <td><?php echo $user->user_email ?></td>
                             <td><?php echo $date_registered->format('M jS, Y')?></td>
                             <td class="edit">
+                                <?php if ( $user_rol == 'Customer' ):?>
                                 <form method="post">
                                     <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
-                                    <button>View more</button>
+                                    <button>WooCommerce info</button>
                                 </form>
+                                <?php endif?>
                             </td>
                             <td class="delete">
                                 <form method="post">
