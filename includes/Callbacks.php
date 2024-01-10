@@ -85,12 +85,20 @@ class Callbacks{
 
     public static function viewMoreUser($id){
         if(!$id) return;
-        /*echo 'view more user';
-        print_r($args);*/
+        global $wp_roles;
+
         $customer = new \WC_Customer( $id );
-        $username_wc = $customer->get_username(); // Get username
+        $username_wc = $customer->get_username(); 
         $user_email_wc = $customer->get_email();
         $avatar = get_avatar_url($user_email_wc);
+        $user_data = get_userdata($id);
+        $all_roles = $wp_roles->get_names();
+        $user_rol = '';
+        if($user_data){
+            $user_rol = $all_roles[$user_data->roles[0]];
+        }else{
+            $user_rol = '';
+        }
         //Billing information
         $billing_first_name = $customer->get_billing_first_name();
         $billing_last_name  = $customer->get_billing_last_name();
@@ -101,6 +109,7 @@ class Callbacks{
         $billing_state      = $customer->get_billing_state();
         $billing_postcode   = $customer->get_billing_postcode();
         $billing_country    = $customer->get_billing_country();
+        $billing_phone  = $customer->get_billing_phone();
         //Shipping information
         $shipping_first_name = $customer->get_shipping_first_name();
         $shipping_last_name  = $customer->get_shipping_last_name();
