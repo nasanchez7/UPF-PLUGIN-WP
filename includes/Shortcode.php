@@ -27,6 +27,9 @@ class Shortcode{
                 if(isset($_POST['previous_page'])){
                     $actualPage = $_POST['previous_page'] - 1;
                 }
+                if(isset($_POST['firts_page'])){
+                    $actualPage = 1;
+                }
                 $args = array(
                     'orderby' => 'date',
                     'order'   => 'DESC',

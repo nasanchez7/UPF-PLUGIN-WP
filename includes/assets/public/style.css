@@ -326,6 +326,13 @@ tbody tr{
     padding: 10px 0px;
 }
 
+.containerPaginationButtons{
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    align-items: center;
+}
+
 .noUsersContainer{
     display: flex;
     align-items: center;
@@ -416,6 +423,27 @@ tbody tr{
     display: flex;
     flex-direction: column;
 
+}
+
+.itemListaOrder{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: max-content;
+}
+
+.itemListaOrder span{
+    font-size: 35px;
+}
+
+.infoListaOrder{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerIconOrder{
+    color: white;
+    margin-right: 20px;
 }
 
 .containerEmail .role{

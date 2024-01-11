@@ -250,36 +250,113 @@
                     </div>
                     <div class="orderOcult" id="<?php echo $order_data['id']?>">
                         <div class="containerDetailsOrder">
-                            <div class="lista">
-                                <div class="itemLista">
-                                    <strong>Payment method</strong>
-                                    <small>
-                                        <?php if($order->get_payment_method_title()) :?>
-                                            <?php echo $order->get_payment_method_title() ?>
-                                        <?php else: ?>
-                                            No information found
-                                        <?php endif?>
-                                    </small>
+                            <div class="contenedorListasInfo">
+                                <div class="lista">
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-money-alt"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Payment method</strong>
+                                            <small>
+                                                <?php if($order->get_payment_method_title()) :?>
+                                                    <?php echo $order->get_payment_method_title() ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-admin-comments"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Customer's note</strong>
+                                            <small>
+                                                <?php if($order->get_customer_note()) :?>
+                                                    <?php echo $order->get_customer_note() ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-airplane"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Shipping method</strong>
+                                            <small>
+                                                <?php if($order->get_shipping_to_display()) :?>
+                                                    <?php echo $order->get_shipping_to_display(); ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="itemLista">
-                                    <strong>Customer's note</strong>
-                                    <small>
-                                        <?php if($order->get_customer_note()) :?>
-                                            <?php echo $order->get_customer_note() ?>
-                                        <?php else: ?>
-                                            No information found
-                                        <?php endif?>
-                                    </small>
+                                <div class="lista">
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-airplane"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Shipping cost</strong>
+                                            <small>
+                                                <?php if($order->get_shipping_total()) :?>
+                                                    <?php echo $order->get_shipping_total(); ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-money-alt"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Total discount</strong>
+                                            <small>
+                                                <?php if($order->get_total_discount()) :?>
+                                                    <?php echo $order->get_total_discount() ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="itemListaOrder">
+                                        <div class="containerIconOrder">
+                                            <span class="dashicons dashicons-money-alt"></span>
+                                        </div>
+                                        <div class="infoListaOrder">
+                                            <strong>Total</strong>
+                                            <small>$ 
+                                                <?php if($order->get_total()) :?>
+                                                    <?php echo $order->get_total() ?>
+                                                <?php else: ?>
+                                                    No information found
+                                                <?php endif?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    
+                                    
                                 </div>
-                                <div class="itemLista">
-                                    <strong>Shipping method</strong>
-                                    <small>
-                                        <?php if($order->get_shipping_to_display()) :?>
-                                            <?php echo $order->get_shipping_to_display(); ?>
-                                        <?php else: ?>
-                                            No information found
-                                        <?php endif?>
-                                    </small>
+                                <div class="lista">
+                                    <div class="itemListaOrder">
+                                        <a href="<?php if($order->get_edit_order_url()) echo $order->get_edit_order_url()?>" class="containerIconOrder">
+                                            <span class="dashicons dashicons-visibility"></span>
+                                        </a>
+                                        <a href="<?php if($order->get_edit_order_url()) echo $order->get_edit_order_url()?>" class="infoListaOrder">
+                                            <strong>View order details</strong>
+                                        </a>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

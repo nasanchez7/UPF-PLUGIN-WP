@@ -126,22 +126,31 @@
         </table>
         <?php if(empty($users)):?>
         <div class="noUsersContainer">
-            <p>No se encontraron mas usuarios.</p>    
+            <p>No more users found.</p>    
         </div>
         <?php endif;?>
         <div class="containerPagination">
-            <?php if($actualPage !== 1) :?>
-                <form method="post">
-                    <input type="number" name="previous_page" value="<?php echo $actualPage?>" style="display:none;" />
-                    <input type="submit" value="Previous page" />
-                </form>
-            <?php endif;?>
-            <?php if(!empty($users)):?>
-                <form method="post">
-                    <input type="number" name="next_page" value="<?php echo $actualPage?>" style="display:none;" />
-                    <input type="submit" value="Next page" />
-                </form>
-            <?php endif;?>    
+            <div>
+                <small>Page <?php echo $actualPage ?>/<?php echo ceil($total_users/5) ?> </small>
+            </div>
+            <div class="containerPaginationButtons">
+                <?php if($actualPage !== 1) :?>
+                    <form method="post">
+                        <input type="number" name="firts_page" value="<?php echo 1?>" style="display:none;" />
+                        <input type="submit" value="First page" />
+                    </form>
+                    <form method="post">
+                        <input type="number" name="previous_page" value="<?php echo $actualPage?>" style="display:none;" />
+                        <input type="submit" value="Previous page" />
+                    </form>
+                <?php endif;?>
+                <?php if(!empty($users)):?>
+                    <form method="post">
+                        <input type="number" name="next_page" value="<?php echo $actualPage?>" style="display:none;" />
+                        <input type="submit" value="Next page" />
+                    </form>
+                <?php endif;?>   
+            </div> 
         </div>
     </div>
 
