@@ -3,7 +3,7 @@
     <div class="buttonsAndTotal">
         <div class="containerTotalUsers">
             <div class="dashicons dashicons-admin-users"></div>   
-            <span><strong><?php echo $total_users?></strong><?php if($total_users == 1){
+            <span><strong><?php echo $user_count['total_users']?></strong><?php if($user_count['total_users'] == 1){
                 echo ' active user on the site.';
             }else{
                 echo ' total active users on the site.';
@@ -55,10 +55,27 @@
                 Message
                 <input type="text" name="sendemail_cuerpo" placeholder="Cuerpo del mensaje" required/>
             </label>
-            <input type="submit" value="Enviar email"/>
+            <input type="submit" value="Send email"/>
         </form>
     </div>
     <div class="tableContainer">
+        <div class="containerFilter">
+            <div class="filter">
+                <span class="dashicons dashicons-filter"></span>
+                <form method="post">
+                    <label for="filter_role">
+                        Role
+                        <select name="filter_role">
+                            <option <?php if($filter_role_actual == 'any') echo 'selected' ?> value="any">Any</option>
+                            <?php foreach($all_roles as $key => $value) :?>
+                                <option <?php if($filter_role_actual == $key) echo 'selected'?> value="<?php echo $key?>"><?php echo $value?></option>
+                            <?php endforeach;?>
+                        </select>  
+                    </label>
+                    <input type="submit" value="Filter"/>
+                </form>
+            </div>
+        </div>  
         <table>
             <thead>
                 <tr>
@@ -131,21 +148,25 @@
         <?php endif;?>
         <div class="containerPagination">
             <div>
-                <small>Page <?php echo $actualPage ?>/<?php echo ceil($total_users/5) ?> </small>
+                <small>Page <?php echo $actualPage ?> </small>
             </div>
             <div class="containerPaginationButtons">
                 <?php if($actualPage !== 1) :?>
                     <form method="post">
+                        <input type="text" name="rol_actual" value="<?php echo $filter_role_actual?>" style="display:none;" />
                         <input type="number" name="firts_page" value="<?php echo 1?>" style="display:none;" />
                         <input type="submit" value="First page" />
                     </form>
                     <form method="post">
+                        <input type="text" name="rol_actual" value="<?php echo $filter_role_actual?>" style="display:none;" />
                         <input type="number" name="previous_page" value="<?php echo $actualPage?>" style="display:none;" />
                         <input type="submit" value="Previous page" />
                     </form>
                 <?php endif;?>
-                <?php if(!empty($users)):?>
+
+                <?php if(!empty($users) && $total_users > 5 && count($users) == 5):?>
                     <form method="post">
+                        <input type="text" name="rol_actual" value="<?php echo $filter_role_actual?>" style="display:none;" />
                         <input type="number" name="next_page" value="<?php echo $actualPage?>" style="display:none;" />
                         <input type="submit" value="Next page" />
                     </form>

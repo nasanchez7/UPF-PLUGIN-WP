@@ -523,3 +523,35 @@ tbody tr{
     margin-top: 15px;
     border-top: 1px solid lightgray;
 }
+
+.containerFilter{
+    display: flex;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+    margin-top: 15px!important;
+    margin-bottom: 0px!important;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.filter{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter form{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter form label{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+}

@@ -21,26 +21,97 @@ class Shortcode{
                     $roles[] = $key;
                 }
                 $actualPage = 1;
-                if(isset($_POST['next_page'])){
-                    $actualPage = $_POST['next_page'] + 1;
-                }
-                if(isset($_POST['previous_page'])){
-                    $actualPage = $_POST['previous_page'] - 1;
-                }
-                if(isset($_POST['firts_page'])){
-                    $actualPage = 1;
-                }
+                $filter_role_actual = 'any';
+                $user_count = count_users();
+                $total_users = $user_count['total_users'];
                 $args = array(
-                    'orderby' => 'date',
-                    'order'   => 'DESC',
+                    'order'   => 'ASC',
                     'role__in' => $roles,
                     'number' => 5,
                     'paged' => $actualPage
                 );
                 $users = get_users( $args );
+                if(isset($_POST['next_page'] )){
+                    $actualPage = $_POST['next_page'] + 1;
+                    if(isset($_POST['rol_actual']) && $_POST['rol_actual'] !== 'any'){
+                        $filter_role_actual = $_POST['rol_actual'];
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => array($_POST['rol_actual']),
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }else{
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => $roles,
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }
+                    
+                }
+                if(isset($_POST['previous_page'])){
+                    $actualPage = $_POST['previous_page'] - 1;
+                    if(isset($_POST['rol_actual']) && $_POST['rol_actual'] !== 'any'){
+                        $filter_role_actual = $_POST['rol_actual'];
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => array($_POST['rol_actual']),
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }else{
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => $roles,
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }
+                }
+                if(isset($_POST['firts_page'])){
+                    $actualPage = 1;
+                    if(isset($_POST['rol_actual']) && $_POST['rol_actual'] !== 'any'){
+                        $filter_role_actual = $_POST['rol_actual'];
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => array($_POST['rol_actual']),
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }else{
+                        $users = array();
+                        $users = get_users(array(
+                                'order'   => 'ASC',
+                                'role__in' => $roles,
+                                'number' => 5,
+                                'paged' => $actualPage
+                        ));
+                    }
+                }
+                if(isset($_POST['filter_role']) && $_POST['filter_role'] !== 'any'){
 
-                $user_count = count_users();
-                $total_users = $user_count['total_users'];
+                    $filter_role_actual = $_POST['filter_role'];
+                    $roles = [$_POST['filter_role']];
+                    if(isset($user_count['avail_roles'][$_POST['filter_role']])){
+                        $total_users = $user_count['avail_roles'][$_POST['filter_role']];
+                    }else{
+                        $total_users = 0;
+                    } 
+                    $users = array();
+                    $users = get_users(array(
+                            'order'   => 'ASC',
+                            'role__in' => $roles,
+                            'number' => 5,
+                            'paged' => $actualPage
+                        ));
+                }
                 if(isset($_POST['delete_userid'])){
                     $args_delete_user = array();
                     $delete_userid = $_POST['delete_userid'];
@@ -59,8 +130,8 @@ class Shortcode{
                         $users = array();
                         $users = get_users(array(
                             'order'   => 'ASC',
-                            'role__in' => $roles,
-                            'number' => 3,
+                            'role__in' => array($_POST['newuser_rol']),
+                            'number' => 5,
                             'paged' => $actualPage
                         ));
                         $total_users = $total_users + 1;
