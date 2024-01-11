@@ -61,8 +61,8 @@
     <div class="tableContainer">
         <div class="containerFilter">
             <div class="filter">
-                <span class="dashicons dashicons-filter"></span>
                 <form method="post">
+                    <span class="dashicons dashicons-filter"></span>
                     <label for="filter_role">
                         Role
                         <select name="filter_role">
@@ -106,6 +106,7 @@
                     <?php if($user_rol):?>
                         <tr>
                             <td>
+                                
                                 <?php if($avatar):?>
                                 <img src="<?php echo $avatar?>" style="width: 50px; height: 50px; border-radius: 25px; margin-right: 10px;"></img>
                                 <?php else: ?>
@@ -115,12 +116,28 @@
                                 <?php endif?>
                                 <span><?php echo $user->user_login ?></span>
                             </td>
-                            <td><?php echo $user->display_name ?></td>
                             <td>
+                                <small class="ocultInfoMobile">DISPLAY NAME</small>
+                                <strong>
+                                <?php echo $user->display_name ?>
+                                </strong>
+                            </td>
+                            <td>
+                                <small class="ocultInfoMobile">ROLE</small>
                                 <span class="role"> <?php echo $user_rol?> </span>
                             </td>
-                            <td><?php echo $user->user_email ?></td>
-                            <td><?php echo $date_registered->format('M jS, Y')?></td>
+                            <td>
+                                <small class="ocultInfoMobile">E-MAIL</small>
+                                <strong>
+                                <?php echo $user->user_email ?>
+                                </strong>
+                            </td>
+                            <td>
+                                <small class="ocultInfoMobile">REGISTRATION DATE</small>
+                                <strong>
+                                <?php echo $date_registered->format('M jS, Y')?>
+                                </strong>
+                            </td>
                             <td class="edit">
                                 <form method="post">
                                     <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
@@ -134,6 +151,7 @@
                                 </form>
                             </td>
                             <td class="emailsend" onclick="activateEmail('<?php echo $user->user_email?>')">
+                                <small class="ocultInfoMobile">SEND EMAIL</small>
                                 <span class="dashicons dashicons-email"></span>
                             </td>
                         </tr>

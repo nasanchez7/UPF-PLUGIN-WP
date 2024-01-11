@@ -54,6 +54,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .containerNewUser form input:not([type="submit"]){
@@ -104,6 +105,8 @@
     margin-left: 0px!important;
     margin-right: 0px!important;
     max-width: 100%!important;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .containerButtons{
@@ -119,18 +122,18 @@
     border-radius: 5px!important;
 }
 
-table{
+.generalContainer table{
     border: none!important;
     background-color: #F2F2F2!important;
     border-spacing: 0px 20px;
 }
 
-table, td, th {
+.generalContainer table, td, th {
     border: none!important;
     text-align: start!important;
 }
 
-tbody tr td{
+.generalContainer tbody tr td{
     font-weight: 600;
     color: black;
     font-size: 18px;
@@ -146,31 +149,31 @@ tbody tr td{
     background-color: rgb(230, 230, 230);
 }
 
-tbody tr{
+.generalContainer tbody tr{
     -webkit-box-shadow: 0px 5px 15px -8px #00000000; 
     box-shadow: 0px 5px 15px -8px #00000000;
 }
 
-tbody tr:hover{
+.generalContainer tbody tr:hover{
     background-color: rgb(230, 230, 230);
     transition: all 0.5s;
     -webkit-box-shadow: 0px 5px 15px -8px #000000; 
     box-shadow: 0px 5px 15px -8px #000000;
 }
 
-thead tr th{
+.generalContainer thead tr th{
     font-weight: 500;
     text-transform: uppercase;
     color: rgb(121, 121, 121);
     font-size: 13px;
 }
 
-tbody tr td{
+.generalContainer tbody tr td{
     padding: 15px;
     background-color: white!important;
 }
 
-tbody tr{
+.generalContainer tbody tr{
     border-radius: 5px;
 }
 
@@ -193,6 +196,7 @@ tbody tr{
     color: #635ef3;
     background-color: #7571e026;
     border-radius: 5px;
+    max-width: max-content;
     padding: 7px;
 }
 
@@ -213,7 +217,7 @@ tbody tr{
     margin-bottom: 50px;
     -webkit-box-shadow: 0px 2px 31px -11px #000000; 
     box-shadow: 0px 2px 31px -11px #000000;
-    transform: translateX(100vw);
+    transform: translateX(200vw);
     transition: all 0.5s;
 }
 
@@ -261,7 +265,7 @@ tbody tr{
 }
 
 .emailsend{
-    color: #4843D9;
+    color: #4843D9!important;
     cursor: pointer;
 }
 
@@ -359,6 +363,7 @@ tbody tr{
     margin: 0px!important;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .containerEmail{
@@ -449,6 +454,7 @@ tbody tr{
 .containerEmail .role{
     width: fit-content;
     padding: 5px!important;
+    
 }
 
 .ordersContainer{
@@ -488,6 +494,7 @@ tbody tr{
     margin-bottom: 0px!important;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .moreInfomationContainer{
@@ -546,6 +553,7 @@ tbody tr{
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .filter form label{
@@ -554,4 +562,119 @@ tbody tr{
     align-items: center;
     font-weight: 600;
     font-size: 20px;
+}
+
+.ocultInfoMobile{
+    display: none;
+}
+
+@media screen and (max-width: 1063px){
+    .contenedorListasInfo {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    .ocultInfoMobile{
+        display: unset;
+    }
+    .generalContainer table thead{
+        display: none!important;
+    }
+    .generalContainer table tbody{
+        display: flex!important;
+        flex-direction: column!important;
+        gap: 10px!important;
+    }
+    .generalContainer tbody tr td{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .generalContainer tbody tr {
+        display: flex!important;
+        align-items: center!important;
+        flex-wrap: wrap!important;
+        background-color: white!important;
+        width: 100%!important;
+    }
+    .containerPaginationButtons {
+        display: flex;
+        width: max-content;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .containerPagination {
+        max-width: 100%!important;
+        width: 100%!important;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 15px;
+        padding: 10px 0px;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .containerNewUser form {
+        max-width: 100%!important;
+        width: 100%!important;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .containerNewUser form label {
+        width: 100%;
+    }
+    .containerNewUser form input[type="submit"] {
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .generalContainer tbody tr td{
+        width: 100%!important;
+    }
+    .generalContainer tbody tr td strong{
+        font-size: 13px;
+    }
+    .generalContainer tbody tr td small{
+        font-size: 11px;
+    }
+    .edit form button {
+        font-size: 13px!important;
+    }
+    .delete form button {
+        font-size: 13px!important;
+    }
+    .role {
+        font-size: 13px!important;
+    }
+}
+
+@media screen and (max-width: 524px){
+    .containerSendEmail{
+        width: auto!important;
+    }
+}
+
+@media screen and (max-width: 331px){
+    .moreInfomationContainer {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 313px){
+    .containerSendEmail {
+        margin-right: 10px!important;
+        margin-bottom: 10px;
+    }
 }
