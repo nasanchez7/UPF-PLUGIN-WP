@@ -84,7 +84,7 @@
                     <th>Rol</th>
                     <th>E-mail</th>
                     <th>registration date</th>
-                    <?php if (is_plugin_active('woocommerce/woocommerce.php')) :?>
+                    <?php if (class_exists('WooCommerce')) :?>
                     <th></th>
                     <?php endif?>
                     <th></th>
@@ -140,7 +140,7 @@
                                 <?php echo $date_registered->format('M jS, Y')?>
                                 </strong>
                             </td>
-                            <?php if (is_plugin_active('woocommerce/woocommerce.php')) :?>
+                            <?php if (class_exists('WooCommerce')) :?>
                             <td class="edit">
                                 <form method="post">
                                     <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
