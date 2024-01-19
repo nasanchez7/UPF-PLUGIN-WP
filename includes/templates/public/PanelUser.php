@@ -84,7 +84,9 @@
                     <th>Rol</th>
                     <th>E-mail</th>
                     <th>registration date</th>
+                    <?php if (is_plugin_active('woocommerce/woocommerce.php')) :?>
                     <th></th>
+                    <?php endif?>
                     <th></th>
                     <th></th>
                 </tr>
@@ -138,12 +140,14 @@
                                 <?php echo $date_registered->format('M jS, Y')?>
                                 </strong>
                             </td>
+                            <?php if (is_plugin_active('woocommerce/woocommerce.php')) :?>
                             <td class="edit">
                                 <form method="post">
                                     <input type="text" name="viewmore_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
                                     <button>WooCommerce info</button>
                                 </form>
                             </td>
+                            <?php endif?>
                             <td class="delete">
                                 <form method="post">
                                     <input type="text" name="delete_userid" style="display: none;" value="<?php echo $user->ID ?>" readonly/>
